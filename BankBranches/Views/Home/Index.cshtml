@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<style>
+    .scroll-container {
+        display: flex; /* Use flexbox for better alignment */
+        overflow-x: auto; /* Enable horizontal scrolling */
+        padding: 20px 0; /* Add some padding */
+    }
+
+    .scroll-container img {
+        max-width: 100%; /* Ensure images don't exceed container width */
+        height: auto; /* Maintain aspect ratio */
+        margin-right: 20px; /* Add some space between images */
+        border-radius: 8px; /* Add rounded corners */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    }
+
+    .text-center {
+        max-width: 800px; /* Limit content width */
+        margin: 0 auto; /* Center align content */
+        padding: 0 20px; /* Add some padding */
+    }
+
+    .display-4 {
+        margin-bottom: 20px; /* Add space below heading */
+    }
+
+    p {
+        margin-top: 20px; /* Add space above paragraph */
+    }
+
+    /* Responsive styles */
+
+
+        .scroll-container img {
+            margin-right: 10px; /* Reduce space between images on small screens */
+        }
+    }
+</style>
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <div class="scroll-container">
+        <img src="https://www.gckuwait.com/wp-content/uploads/2016/12/gulf-consult-KFH-Branches2.jpg" alt="Cinque Terre">
+        <img src="https://www.kfh.com/en/dam/jcr:80e74563-5eed-489e-9ea0-32231b3d538b/KFH-Credit-Cards-(Web-Banner)-En.jpg">
+    </div>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>

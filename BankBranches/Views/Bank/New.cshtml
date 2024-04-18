@@ -1,0 +1,73 @@
+﻿@model NewBranchForm
+<style>
+    /* Custom form styles */
+    .custom-form {
+        max-width: 400px;
+        margin: 0 auto;
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="location"],
+    input[type="branchManager"],
+    input[type="employeeCount"] {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    button {
+        padding: 12px 20px;
+        font-size: 16px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+</style>
+
+@using (Html.BeginForm("New", "Bank", FormMethod.Post, new { @class = "custom-form" }))
+{
+    <div class="form-group">
+        @Html.LabelFor(model => model.name)
+        @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.location)
+        @Html.EditorFor(model => model.location, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.branchManager)
+        @Html.EditorFor(model => model.branchManager, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.employeeCount)
+        @Html.EditorFor(model => model.employeeCount, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+    </div>
+
+    <button class="btn btn-primary" type="submit">Save</button>
+}
