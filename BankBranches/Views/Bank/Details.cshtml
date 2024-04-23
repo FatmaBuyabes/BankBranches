@@ -1,19 +1,20 @@
-﻿@model BankBranches.Models.BankBranch
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
+    <title>Branch Details</title>
     <style>
-        /* Add your CSS styles here */
+        /* CSS styles here */
+
+        /* General Styles */
         body {
             font-family: Arial, sans-serif;
             background-color: #f5f5f5;
-            color: #333;
+            color: black;
             margin: 0;
             padding: 0;
+            margin-bottom: 50px; /* Add margin to the bottom of the body */
         }
 
         .container {
@@ -22,40 +23,98 @@
             padding: 20px;
         }
 
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
         h2 {
-            color: #007bff;
+            color: #3ca36b;
+            margin: 0; /* Remove default margin */
         }
 
-        dl {
-            display: grid;
-            grid-template-columns: auto 1fr;
-            gap: 10px;
+        /* Button Styles */
+        .button {
+            background-color: #3ca36b;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            cursor: pointer;
+            border: none;
         }
 
-        dt {
-            font-weight: bold;
+        .button:hover {
+            background-color: darkgreen;
         }
 
+        /* Footer Styles */
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            background-color: #3ca36b;
+            color: white;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Responsive Styles */
+            .container {
+                padding: 10px;
+            }
+
+            .button {
+                padding: 8px 16px;
+            }
+        }
+
+        /* Additional styles for icons */
         .icon {
             width: 20px;
             height: 20px;
             vertical-align: middle;
-            margin-right: 5px;
+            margin-left: 5px;
+        }
+
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            margin-bottom: 40px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>Branch Details</h2>
+        <div class="header">
+            <h2>Branch Details</h2>
+            <a href="/Bank/AddEmployee/@Model.id" class="button">Add Employee</a>
+        </div>
         <div>
             <h4>Branch</h4>
             <hr>
             <dl>
-               <dt>Branch Name</dt>
-               <dd>@Model.id</dd>
+                <dt>Branch Name</dt>
+                <dd>@Model.id</dd>
 
                 <dt>Employee Count</dt>
-                <dd>@Model.employeeCount</dd>
+                <dd>@Model.employees.Count</dd>
 
                 <dt>Branch Manager</dt>
                 <dd>@Model.branchManager</dd>
@@ -63,7 +122,31 @@
                 <dt>Location</dt>
                 <dd>@Model.location <img src="location-icon.png" alt="Location Icon" class="icon"></dd>
             </dl>
+
+            <div>
+                <h4>Employees</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Position</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var employee in Model.employees)
+                        {
+                            <tr>
+                                <td>@employee.Name</td>
+                                <td>@employee.Position</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
+    <footer>
+        © 2024 BankBranches. All rights reserved.
+    </footer>
 </body>
 </html>

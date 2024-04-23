@@ -1,0 +1,61 @@
+﻿@model BankBranches.Models.AddEmployeeForm
+
+<style>
+    /* Custom CSS for form styling */
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-weight: bold;
+        width: 80px; /* Set width to make labels shorter */
+        display: inline-block;
+    }
+
+    input[type="text"] {
+        width: 400px; /* Adjust width of input to accommodate shorter labels */
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    .text-danger {
+        color: red;
+    }
+
+    .btn-primary {
+        background-color: #45a049;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+        .btn-primary:hover {
+            background-color: cornflowerblue;
+        }
+</style>
+
+<form asp-controller="Bank" asp-action="AddEmployee" method="post">
+    <div class="form-group">
+        <label asp-for="Name">Name:</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CivilId">Civil ID:</label>
+        <input asp-for="CivilId" class="form-control" />
+        <span asp-validation-for="CivilId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Position">Position:</label>
+        <input asp-for="Position" class="form-control" />
+        <span asp-validation-for="Position" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add Employee</button>
+</form>

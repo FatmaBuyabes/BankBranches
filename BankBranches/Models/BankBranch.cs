@@ -11,6 +11,7 @@
 
         public int employeeCount { get; set; }
 
+        public List<Employee> employees { get;}
 
     }
 }

@@ -18,6 +18,7 @@
             padding: 10px 20px;
             border-radius: 5px;
             cursor: pointer;
+            margin-bottom: 20px; 
             transition: background-color 0.3s ease;
         }
 
@@ -61,7 +62,7 @@
 
 <h2>Branches</h2>
 
-<!-- Add New Branch button -->
+
 <div class="add-button">
     <a href="/Bank/New/">
         <button>
@@ -77,6 +78,7 @@
             <th>Location</th>
             <th>Branch Manager</th>
             <th>Employee Count</th>
+            <th> </th>
         </tr>
     </thead>
     <tbody>
@@ -89,6 +91,10 @@
                 <td>@bankBranch.location</td>
                 <td>@bankBranch.branchManager</td>
                 <td>@bankBranch.employeeCount</td>
+                <td>
+                    <a href="/Bank/Edit/@bankBranch.id">Edit</a>
+                </td>
+
             </tr>
         }
     </tbody>
