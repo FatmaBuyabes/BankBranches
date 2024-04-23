@@ -1,0 +1,39 @@
+﻿@model BankBranches.Models.BankBranch
+
+<h2>Employee Count per Branch</h2>
+
+<canvas id="employeeChart" width="400" height="200"></canvas>
+
+@section scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        var ctx = document.getElementById('employeeChart').getContext('2d');
+        var chartData = @Html.Raw(Json.Serialize(Model));
+
+        var labels = chartData.map(item => item.BranchName);
+        var data = chartData.map(item => item.EmployeeCount);
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Employee Count',
+                    backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1,
+                    data: data,
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+}

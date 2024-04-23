@@ -1,4 +1,4 @@
-﻿@model List<BankBranch>
+﻿@model BankDashboardViewModel
 
 <style>
     /* Style for the button */
@@ -51,17 +51,49 @@
 
     /* Links in table cells */
     td a {
-        color: #007bff; /* Blue color for links */
+        color: #3ca36b; /* Blue color for links */
         text-decoration: none;
     }
 
         td a:hover {
             text-decoration: underline; /* Underline on hover */
         }
+
+    .dashboard {
+        background-color: #ffffff;
+        border-radius: 5px;
+        padding: 20px;
+        margin-top: 0;
+    }
+
+    .dashboard h2 {
+            color: #3ca36b;
+
+        margin-top: 40px;
+    }
+
+    .dashboard-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+        .dashboard-table td {
+            padding: 10px;
+            border-bottom: 1px solid #3ca36b;
+        }
+
+            .dashboard-table td:first-child {
+                font-weight: bold;
+                width: 200px; /* Adjust the width as needed */
+            }
+</style>
+
+</style>
+
 </style>
 
 <h2>Branches</h2>
-
 
 <div class="add-button">
     <a href="/Bank/New/">
@@ -82,7 +114,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var bankBranch in Model)
+        @foreach (var bankBranch in Model.BranchList)
         {
             <tr>
                 <td>
@@ -99,3 +131,27 @@
         }
     </tbody>
 </table>
+
+<div class="dashboard">
+    <h2>Bank Dashboard</h2>
+    <table class="dashboard-table">
+        <tr>
+            <td>Total Branches</td>
+            <td>@Model.TotalBranches</td>
+        </tr>
+        <tr>
+            <td>Total Employees</td>
+            <td>@Model.TotalEmployees</td>
+        </tr>
+        <tr>
+            <td>Branch with Most Employees</td>
+            <td>@Model.BranchWithMostEmployees?.name</td>
+        </tr>
+    </table>
+</div>
+
+
+
+
+
+
